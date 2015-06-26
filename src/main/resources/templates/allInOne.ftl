@@ -6,7 +6,7 @@
 <body>
 <form action="TextBox" method="POST">
 List :  <br/>
-<textarea rows="5" cols="50" name="list">
+<textarea rows="5" cols="50" name="item">
 </textarea>
 <br/>
 <input type="submit" value="Enter" />
