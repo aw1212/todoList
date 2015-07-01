@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Text Input Control</title>
+<title>Alex's To Do List</title>
 </head>
-<body>
-<form action="TextBox" method="POST">
+<body bgcolor="#E6E6FA">
+<form action="/addItem" method="POST">
 List :  <br/>
 <textarea rows="5" cols="50" name="item">
 </textarea>
 <br/>
 <input type="submit" value="Enter" />
 </form>
+<form action="/refresh" method="POST">
+<input type="submit" value="Refresh" />
+</form>
 <br/>
-<img src="http://www.cacklehatchery.com/images/white_silkie_hen2.jpg" style="float:right" alt="Mountain View">
+<img src="http://www.cacklehatchery.com/images/white_silkie_hen2.jpg" style="float:right" alt="Chicken">
 My List :  <br/>
 <ul type="circle">
 <#if listy??>

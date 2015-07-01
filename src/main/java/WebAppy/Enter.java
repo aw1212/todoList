@@ -1,28 +1,38 @@
 package WebAppy;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.io.IOException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class Enter {
+
+    @Autowired
+    private ToDoList toDoList;
     
-    //private static final List<String> todo = new ArrayList<>(); 
-    private final String path = "/Users/techsupport/Downloads/ToDoList/src/main/java/WebAppy/listHistory.txt";
-    private final StoredList sl = new StoredList(path);
-    
-    @RequestMapping(value = "/TextBox", method = RequestMethod.POST)
-    public String getList(@RequestParam String item, ModelMap model) throws IOException { //if param name same as html name dont need value
-        List<String> todo = ItemList.getList();
-        sl.readFile(todo);
-        todo.add(item);
-        sl.writeFile(item);
-        model.addAttribute("listy", todo);
-        return "allInOne";
+    @RequestMapping(value = "/addItem", method = RequestMethod.POST)
+    public String getList(@RequestParam String item) throws IOException { //if param name same as html name dont need value
+        if (!item.trim().isEmpty() && !toDoList.getList().contains(item)) {
+            toDoList.writeItemsToFile(item);
+            return "forward:/TextBox";
+        }
+        else { 
+            return "forward:/errorPage";
+        }
     }
+    
+    @RequestMapping(value = "/errorPage", method = RequestMethod.GET)
+    public String showError() {
+        return "error";
+    }
+    
+    @RequestMapping(value = "/refresh", method = RequestMethod.POST)
+    public String wipeList() throws IOException {
+        toDoList.deleteItemsFromFileAndList();
+        return "forward:/TextBox";
+    }
+
 }
