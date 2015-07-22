@@ -12,15 +12,15 @@ List :  <br/>
 <input type="submit" value="Enter" />
 </form>
 <form action="/refresh" method="POST">
-<input type="submit" value="Refresh" />
+<input type="submit" value="Clear" />
 </form>
 <br/>
-<img src="http://www.cacklehatchery.com/images/white_silkie_hen2.jpg" style="float:right" alt="Chicken">
+<img src="http://pixdaus.com/files/items/pics/5/38/557538_db299ee391c3b36d727cc20acfe60ec1_large.jpg" style="float:right" alt="Chicken">
 My List :  <br/>
 <ul type="circle">
 <#if listy??>
 <#list listy as thing>
- <li>${thing}</li>
+<li>${thing}</li>
 </#list>
 </#if>
 </ul>
