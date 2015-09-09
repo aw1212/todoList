@@ -1,5 +1,7 @@
 WebAppy/Enter.class
+WebAppy/ErrorMessage.class
 WebAppy/HelloController.class
+WebAppy/DoneList.class
 WebAppy/ToDoList.class
 WebAppy/Application.class
 WebAppy/Application$1.class

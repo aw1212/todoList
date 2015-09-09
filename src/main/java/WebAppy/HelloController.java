@@ -11,6 +11,9 @@ public class HelloController {
     
     @Autowired
     private ToDoList toDoList;
+    
+    @Autowired
+    private DoneList doneList;
 
     @RequestMapping("/TextBox")
     public String index(ModelMap model) throws FileNotFoundException {
