@@ -11,8 +11,9 @@
 <body bgcolor="#E6E6FA">
 <form action="/addItem" method="POST">
 List :  <br/>
-<textarea rows="5" cols="50" name="item">
-</textarea>
+<textarea rows="5" cols="50" name="item"> </textarea>
+<textarea rows="5" cols="10" name="date"> </textarea>
+<textarea rows="5" cols="10" name="priority"> </textarea>
 <br/>
 <input type="submit" value="Enter" />
 </form>

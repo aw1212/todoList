@@ -11,14 +11,44 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ToDoList {
     
-    private final String path = "/Users/techsupport/Downloads/ToDoList/src/main/java/WebAppy/listHistory.txt";
+    private List<ToDoItem> toDoList = new ArrayList<>();
+    
+    public void addItemToList(String item, Date date, Enum priority) {
+        ToDoItem toDoItem = new ToDoItem();
+        toDoItem.setDescription(item);
+        toDoItem.setDueDate(date);
+        toDoItem.setPriority(priority);
+        toDoList.add(toDoItem);
+    }
+    
+    public void clearList() {
+        toDoList.clear();
+    }
+    
+    public List<ToDoItem> getToDoList() {
+        return toDoList;
+    }
+    
+    public void removeItemFromList(int index) {
+        toDoList.remove(index);
+    }
+    
+    public void removeItemFromList(ToDoItem hashcode) {
+        toDoList.remove(hashcode);
+    }
+    
+    /*private final String path = "/Users/techsupport/Downloads/ToDoList/src/main/java/WebAppy/listHistory.txt";
     private File file = new File(path);
     private List<String> list = new ArrayList<>();
     
@@ -80,6 +110,10 @@ public class ToDoList {
     
     public List<String> getList() throws FileNotFoundException {
         return list;
+    }*/
+    
+    public List<ToDoItem> getList() {
+        return toDoList;
     }
 
 }

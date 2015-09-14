@@ -9,7 +9,7 @@ public class Application {
 
     public static void main(String[] args) {
         
-        ConfigurableApplicationContext context = SpringApplication.run(Application.class);
+        final ConfigurableApplicationContext context = SpringApplication.run(Application.class);
         
         Runtime.getRuntime().addShutdownHook(new Thread(){
             @Override
