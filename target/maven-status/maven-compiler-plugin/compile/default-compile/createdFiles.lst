@@ -1,10 +1,8 @@
 WebAppy/ToDoMap.class
 WebAppy/ErrorMessage.class
-WebAppy/ToDoList.class
 WebAppy/HelloController.class
-WebAppy/DoneList.class
 WebAppy/Application.class
 WebAppy/Application$1.class
 WebAppy/Priority.class
+WebAppy/Action.class
 WebAppy/ToDoItem.class
-WebAppy/Enter.class

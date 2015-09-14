@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Alex's To Do List</title>
-</head>
-<#if errorMessage??>
-</br>
-<font color="red" size="10">${errorMessage}</font>
-</br>
-</#if>
+    <head>
+        <title>Alex's To Do List</title>
+    </head>
 <body bgcolor="#E6E6FA">
+    <#if errorMessage??> </br>
+        <font color="red" size="6">${errorMessage}</font> </br>
+    </#if>
 <form action="/addItem" method="POST">
-List :  <br/>
-<textarea rows="1" cols="30" name="item"> </textarea>
-<textarea rows="1" cols="10" name="date"> </textarea>
+List:  <br/> <br/>
+Item:
+<textarea rows="1" cols="30" name="item"> </textarea> <br/>
+Due Date:
+<textarea rows="1" cols="15" name="date">01/01/2012</textarea> <br/>
+Priority:
 <select name="priority">
   <option value="HIGH">high</option>
   <option value="MEDIUM">medium</option>
   <option value="LOW">low</option>
-</select>
-<br/>
+</select> <br/> </br>
 <input type="submit" value="Enter" />
 </form>
 <form action="/refresh" method="POST">
-<input type="submit" value="Clear" />
-</form>
-<br/>
-My List :  <br/>
+<input type="submit" value="Clear" style="background-color:#FF6666; color:"black";"/>
+</form> <br/>
+My List: <br/>
 <form action="/remove" method="POST">
 <#if listy??>
-<ul>
-    <#list listy?keys as key>
-    <input type="checkbox" name="listItem" value="${key}"> ${key}=${listy?values[key_index].description} <font color="blue">${listy?values[key_index].priority}</font>
-    </br>
-    </#list>
-</ul>
+    <ul>
+        <#list listy?keys as key>
+            <#if !listy?values[key_index].done>   
+                <input type="checkbox" name="listItem" value="${key}"> 
+                ${listy?values[key_index].description} <font color="blue">${listy?values[key_index].priority}</font> </br>
+            </#if> 
+        </#list> </br>
+Done: </br>
+        <#list listy?keys as key>
+            <#if listy?values[key_index].done>
+                <input type="checkbox" name="listItem" value="${key}">
+                <del>${listy?values[key_index].description} <font color="blue">${listy?values[key_index].priority}</font><del> </br>
+            </#if> 
+        </#list>
+    </ul>
 </#if>
 <input type="submit" value="Remove">
 <input type="submit" formaction="/done" method="POST" value="Done">
-<#if doneList??>
-<#list doneList as doneItem>
-<del>${doneItem}</del>
-</#list>
-</#if>
 </form>
 </body>
 </html>
