@@ -67,26 +67,4 @@ public class Action {
         return "forward:/TextBox";
     } 
     
-    
-    /*
-    
-    @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public String removeItem(@RequestParam("listItem") ArrayList<String> listItems) throws IOException {
-        for (String listItem : listItems) {
-            toDoList.deleteSingleItemFromFileAndList(listItem);
-        }
-        return "forward:/TextBox";
-    } 
-
-    @RequestMapping(value = "/done", method = RequestMethod.POST)
-    public String markAsDone(@RequestParam("listItem") ArrayList<String> doneItems, ModelMap model) throws IOException {
-        for (String doneItem : doneItems) {
-            doneList.addItemToDoneListAndFile(doneItem);
-            toDoList.deleteSingleItemFromFileAndList(doneItem);
-            model.addAttribute("doneList", doneList.getList());
-        }
-        return "forward:/TextBox";
-    }
-    */
-
 }

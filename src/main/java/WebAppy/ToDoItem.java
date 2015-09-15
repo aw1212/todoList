@@ -1,10 +1,11 @@
 package WebAppy;
 
+import java.io.Serializable;
 import java.util.Date;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ToDoItem {
+public class ToDoItem implements Serializable {
     
     private String description;
     private boolean done;
