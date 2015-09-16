@@ -10,9 +10,9 @@
 <form action="/addItem" method="POST">
 List:  <br/> <br/>
 Item:
-<textarea rows="1" cols="30" name="item"> </textarea> <br/>
+<textarea rows="1" cols="30" name="item"></textarea> <br/>
 Due Date:
-<textarea rows="1" cols="15" name="date">01/01/2012</textarea> <br/>
+<textarea rows="1" cols="15" name="date" placeholder="DD/MM/YYYY"></textarea> <br/>
 Priority:
 <select name="priority">
   <option value="HIGH">high</option>
@@ -29,16 +29,22 @@ My List: <br/>
 <#if listy??>
     <ul>
         <#list listy?keys as key>
-            <#if !listy?values[key_index].done>   
+            <#if !listy?values[key_index].done>
                 <input type="checkbox" name="listItem" value="${key}"> 
-                ${listy?values[key_index].description} <font color="blue">${listy?values[key_index].priority}</font> </br>
+                <#if listy?values[key_index].priority == "HIGH">
+                    ${listy?values[key_index].description} <font color="red">${listy?values[key_index].priority}</font> </br>
+                <#elseif listy?values[key_index].priority == "MEDIUM">
+                    ${listy?values[key_index].description} <font color="orange">${listy?values[key_index].priority}</font> </br>
+                <#elseif listy?values[key_index].priority == "LOW">
+                    ${listy?values[key_index].description} <font color="blue">${listy?values[key_index].priority}</font> </br>
+                </#if>
             </#if> 
         </#list> </br>
 Done: </br>
         <#list listy?keys as key>
             <#if listy?values[key_index].done>
                 <input type="checkbox" name="listItem" value="${key}">
-                <del>${listy?values[key_index].description} <font color="blue">${listy?values[key_index].priority}</font><del> </br>
+                <del>${listy?values[key_index].description}<del> </br>
             </#if> 
         </#list>
     </ul>
