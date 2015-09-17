@@ -44,4 +44,8 @@ public class ToDoItem implements Serializable {
         return priority;
     }
     
+    public String covertDateToString() {
+        return dueDate.toString();
+    }
+    
 }

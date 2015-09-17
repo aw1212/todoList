@@ -30,13 +30,14 @@ My List: <br/>
     <ul>
         <#list listy?keys as key>
             <#if !listy?values[key_index].done>
-                <input type="checkbox" name="listItem" value="${key}"> 
+                <input type="checkbox" name="listItem" value="${key}">
+                <#assign date = listy?values[key_index].dueDate?date>
                 <#if listy?values[key_index].priority == "HIGH">
-                    ${listy?values[key_index].description} <font color="red">${listy?values[key_index].priority}</font> </br>
+                    ${listy?values[key_index].description} (${date} <font color="red">${listy?values[key_index].priority}</font>) </br>
                 <#elseif listy?values[key_index].priority == "MEDIUM">
-                    ${listy?values[key_index].description} <font color="orange">${listy?values[key_index].priority}</font> </br>
+                    ${listy?values[key_index].description} (${date} <font color="orange">${listy?values[key_index].priority}</font>) </br>
                 <#elseif listy?values[key_index].priority == "LOW">
-                    ${listy?values[key_index].description} <font color="blue">${listy?values[key_index].priority}</font> </br>
+                    ${listy?values[key_index].description} (${date} <font color="blue">${listy?values[key_index].priority}</font>) </br>
                 </#if>
             </#if> 
         </#list> </br>

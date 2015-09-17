@@ -12,16 +12,20 @@ import java.util.ArrayList;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Action {
 
     @Autowired
     private ToDoMap toDoMap;
+    
+    private boolean dateParseError;
         
     @RequestMapping(value = "/addItem", method = RequestMethod.POST)
     public String getList(@RequestParam String item, @RequestParam String date, @RequestParam Priority priority) throws IOException, ParseException {
-        if (!item.trim().isEmpty()) {
+        if (!item.trim().isEmpty() && !date.isEmpty()) {
             DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
             Date dueDate = format.parse(date);
             toDoMap.addItemToMap(item,dueDate,priority); 
@@ -32,9 +36,22 @@ public class Action {
         }
     }
     
+    @ExceptionHandler(ParseException.class)
+    public String handleParseException(ParseException ex) {
+        dateParseError=true;
+        return "forward:/errorMessage";
+    }
+       
     @RequestMapping(value = "/errorMessage", method = RequestMethod.POST)
     public String displayErrorMessage(ModelMap model) {
-        ErrorMessage e = new ErrorMessage("Please enter a non-empty value");
+        ErrorMessage e;
+        if (dateParseError) {
+            e = new ErrorMessage("Please enter date as DD/MM/YYYY");
+            dateParseError = false;
+        }
+        else {
+            e = new ErrorMessage("Please enter a non-empty value into Item and Due Date");
+        }
         model.addAttribute("errorMessage", e.getMessage());
         return "forward:/TextBox";
     }
