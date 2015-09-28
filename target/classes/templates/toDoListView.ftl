@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css/main.css"></link>
         <title>Alex's To Do List</title>
     </head>
 <body bgcolor="#E6E6FA">
-    <#if errorMessage??> </br>
-        <font color="red" size="6">${errorMessage}</font> </br>
-    </#if>
 <form action="/addItem" method="POST">
-List:  <br/> <br/>
+<span id="title"><center><b><font size=6>TO DO LIST</font></b></center></span> <br/> <br/>
+    <#if errorMessage??> </br>
+        <font color="red"><i>${errorMessage}</i></font> </br>
+    </#if>
 Item:
 <textarea rows="1" cols="30" name="item"></textarea> <br/>
 Due Date:
@@ -26,6 +27,9 @@ Priority:
 </form> <br/>
 My List: <br/>
 <form action="/remove" method="POST">
+<#if !listy?has_content> </br>
+<font color=#000066>You have no tasks to do!</font>
+</#if>
 <#if listy??>
     <ul>
         <#list listy?keys as key>
@@ -33,7 +37,7 @@ My List: <br/>
                 <input type="checkbox" name="listItem" value="${key}">
                 <#assign date = listy?values[key_index].dueDate?date>
                 <#if listy?values[key_index].priority == "HIGH">
-                    ${listy?values[key_index].description} (${date} <font color="red">${listy?values[key_index].priority}</font>) </br>
+                    ${listy?values[key_index].description} (${date} <font color="red">${listy?values[key_index].priority}</font> <img src="reddot.png" alt="red">) </br>
                 <#elseif listy?values[key_index].priority == "MEDIUM">
                     ${listy?values[key_index].description} (${date} <font color="orange">${listy?values[key_index].priority}</font>) </br>
                 <#elseif listy?values[key_index].priority == "LOW">

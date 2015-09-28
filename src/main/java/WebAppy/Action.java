@@ -13,7 +13,6 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Action {
@@ -21,8 +20,8 @@ public class Action {
     @Autowired
     private ToDoMap toDoMap;
     
-    private boolean dateParseError;
-        
+    private ErrorMessage errorMessage;
+    
     @RequestMapping(value = "/addItem", method = RequestMethod.POST)
     public String getList(@RequestParam String item, @RequestParam String date, @RequestParam Priority priority) throws IOException, ParseException {
         if (!item.trim().isEmpty() && !date.isEmpty()) {
@@ -31,28 +30,29 @@ public class Action {
             toDoMap.addItemToMap(item,dueDate,priority); 
             return "forward:/TextBox";
         }
+        else if (item.isEmpty() && date.isEmpty()) {
+            errorMessage = new ErrorMessage("Please enter a non-empty value into Item and Due Date");
+            return "forward:/errorMessage";
+        }
+        else if (item.isEmpty()) {
+            errorMessage = new ErrorMessage("Please enter a non-empty value into Item");
+            return "forward:/errorMessage";
+        }
         else {
+            errorMessage = new ErrorMessage("Please enter a non-empty value into Due Date");
             return "forward:/errorMessage";
         }
     }
     
     @ExceptionHandler(ParseException.class)
     public String handleParseException(ParseException ex) {
-        dateParseError=true;
+        errorMessage = new ErrorMessage("Please enter date as DD/MM/YYYY");
         return "forward:/errorMessage";
     }
        
     @RequestMapping(value = "/errorMessage", method = RequestMethod.POST)
     public String displayErrorMessage(ModelMap model) {
-        ErrorMessage e;
-        if (dateParseError) {
-            e = new ErrorMessage("Please enter date as DD/MM/YYYY");
-            dateParseError = false;
-        }
-        else {
-            e = new ErrorMessage("Please enter a non-empty value into Item and Due Date");
-        }
-        model.addAttribute("errorMessage", e.getMessage());
+        model.addAttribute("errorMessage", errorMessage.getMessage());
         return "forward:/TextBox";
     }
     
