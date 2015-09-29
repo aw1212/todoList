@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<span id="color_strip_horizontal"></span>
+<span id="color_strip_vertical"></span>
     <head>
         <link rel="stylesheet" type="text/css" href="css/main.css"></link>
         <title>Alex's To Do List</title>
@@ -8,25 +10,26 @@
     <h1>TO DO LIST</h1> <br/> <br/>
     <form action="/addItem" method="POST">
         <#if errorMessage??> </br>
-            <font color="red"><i>${errorMessage}</i></font> </br>
+            <font color="red" id="error_text"><i>${errorMessage}</i></font> </br>
         </#if>
-Item:
-    <textarea rows="1" cols="30" name="item"></textarea> <br/>
-Due Date:
-    <textarea rows="1" cols="15" name="date" placeholder="DD/MM/YYYY"></textarea> <br/>
-Priority:
-    <select name="priority">
+<div id="colorstrip">
+<div id="item_text">Item:</div>
+    <textarea id="item_box" name="item"></textarea> <br/>
+<div id="date_text">Due Date:</div>
+    <textarea id="date_box" name="date" placeholder="DD/MM/YYYY"></textarea> <br/>
+<div id ="priority_text">Priority:</div>
+    <select id="priority_box" name="priority">
         <option value="HIGH">high</option>
         <option value="MEDIUM">medium</option>
         <option value="LOW">low</option>
     </select> <br/> </br>
-<input type="submit" value="Enter" id="enter_button" class="top_button"/>
+<input type="submit" value="Enter" id="enter_button">
 </form>
 <form action="/refresh" method="POST">
-<input type="submit" value="Clear" id="clear_button" class="top_button"/>
-</form> <br/> <br/> <br/>
-<h3>My List:</h3> 
-<form action="/remove" method="POST">
+<input type="submit" value="Clear" id="clear_button">
+</form> <br/><br/><br/>
+<form action="/remove" method="POST" id="list_items">
+<h3>My List:</h3>
 <#if !listy?has_content> 
 <font color=#000066>You have no tasks to do!</font>
 </#if>
@@ -60,4 +63,5 @@ Priority:
 <input type="submit" formaction="/done" method="POST" value="Done">
 </form>
 </body>
+</div>
 </html>

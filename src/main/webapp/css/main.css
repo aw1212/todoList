@@ -1,9 +1,39 @@
+#color_strip_horizontal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background: linear-gradient(darkcyan, darkslategray);
+    height:100%;
+    border: outset;
+    border-color: darkcyan;
+}
+
+#color_strip_vertical{
+  position: fixed;
+  bottom: 0;
+  left:0;
+  width: 100%;
+  background: linear-gradient(darkred, brown);
+  height:80px;
+  border: outset;
+  border-color: darkred;
+}
+
+#error_text{
+    position: absolute;
+    left: 350px;
+    top: 5px;
+}
+
 h1{
-    width: 100%;
-    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+    width: 40%;
     text-align: center;
+    text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
     font-size: xx-large;
     font-weight: bold;
+    background-position: center top; 
+    background: linear-gradient(gold,red);
 }
 
 textarea{
@@ -15,11 +45,45 @@ textarea{
     box-shadow: 0 0 5px rgba(81, 203, 238, 0);
     -webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 0);
     -moz-box-shadow: 0 0 5px rgba(81, 203, 238, 0); 
+    height: 20px;
 }
 
-.top_button{
-   float:left;
-   margin-right:5px;
+#item_box{
+    width: 200px;
+    position: absolute;
+    left: 420px; 
+    top: 100px;
+}
+
+#item_text{
+    position: absolute;
+    left: 350px;
+    top: 99px;
+}
+
+#date_box{
+    width:80px;
+    position: absolute;
+    left: 420px;
+    top: 140px;
+}
+
+#date_text{
+    position: absolute;
+    left: 350px;
+    top: 139px;
+}
+
+#priority_box{
+    position: absolute;
+    left: 420px;
+    top: 180px;
+}
+
+#priority_text{
+    position: absolute;
+    left: 350px;
+    top: 179px;
 }
 
 input[type=submit]{
@@ -47,6 +111,20 @@ input[type=submit]:hover{
 }
 
 #clear_button{
+    position: absolute;
+    left: 420px;
     background-color: #FF6666;
     color:#000;
+    top: 220px;
+}
+
+#enter_button{
+    position: absolute;
+    left: 350px;
+    top: 220px;
+}
+
+#list_items{
+    position: absolute;
+    left: 350px;
 }
