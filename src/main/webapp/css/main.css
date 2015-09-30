@@ -23,7 +23,7 @@
 #error_text{
     position: absolute;
     left: 350px;
-    top: 5px;
+    top: 65px;
 }
 
 h1{
@@ -62,7 +62,7 @@ textarea{
 }
 
 #date_box{
-    width:90px;
+    width:100px;
     position: absolute;
     left: 420px;
     top: 140px;
@@ -112,7 +112,7 @@ input[type=submit]:hover{
 
 #clear_button{
     position: absolute;
-    left: 420px;
+    left: 409px;
     background-color: #FF6666;
     color:#000;
     top: 220px;
@@ -127,4 +127,33 @@ input[type=submit]:hover{
 #list_items{
     position: absolute;
     left: 350px;
+}
+
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+tr{
+    border: 1px solid black;
+    height:30px;
+}
+
+td{
+    border: 1px solid black;
+}
+
+#item_column{
+    width: 150px;
+}
+
+#date_column{
+    width: 110px;
+    text-align: center;
+}
+
+#priority_column{
+    width: 40px;
+    text-align: center;
 }

@@ -25,8 +25,9 @@ public class ToDoMap implements Serializable {
     @PostConstruct
     public void makeMap() {
         try {
-            FileInputStream fileIn = new FileInputStream("/home/alessandra/NetBeansProjects/todoList/mappy.ser");
-            //FileInputStream fileIn = new FileInputStream("/C:/Users/Alessandra/git/todoList/mappy.ser");
+            //FileInputStream fileIn = new FileInputStream("/home/alessandra/NetBeansProjects/todoList/mappy.ser");
+            FileInputStream fileIn = new FileInputStream("/Users/techsupport/Downloads/ToDoList/mappy.ser");
+            //FileInputStream fileIn = new FileInputStream("C:\Users\Alessandra\git\todoList\mappy.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             toDoMap = (Map) in.readObject();
             in.close();
@@ -80,8 +81,9 @@ public class ToDoMap implements Serializable {
     
     private void saveState() {
         try {
-            FileOutputStream fileOut = new FileOutputStream("/home/alessandra/NetBeansProjects/todoList/mappy.ser");
-            //FileOutputStream fileOut = new FileOutputStream("/C:/Users/Alessandra/git/todoList/mappy.ser");
+            //FileOutputStream fileOut = new FileOutputStream("/home/alessandra/NetBeansProjects/todoList/mappy.ser");
+            FileOutputStream fileOut = new FileOutputStream("/Users/techsupport/Downloads/ToDoList/mappy.ser");
+            //FileOutputStream fileOut = new FileOutputStream("C:\Users\Alessandra\git\todoList\mappy.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(toDoMap);
             out.close();

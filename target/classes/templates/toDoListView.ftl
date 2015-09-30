@@ -30,22 +30,28 @@
 </form> <br/><br/><br/>
 <form action="/remove" method="POST" id="list_items">
 <h3>My List:</h3>
-<#if !listy?has_content> 
+<#if !listy?has_content>
 <font color=#000066>You have no tasks to do!</font>
 </#if>
 <#if listy??>
     <ul>
         <#list listy?keys as key>
             <#if !listy?values[key_index].done>
+                <table>
+                <tr>
+                <td id="checkbox_column">
                 <input type="checkbox" name="listItem" value="${key}">
+                </td>
                 <#assign date = listy?values[key_index].dueDate?date>
                 <#if listy?values[key_index].priority == "HIGH">
-                    ${listy?values[key_index].description} (${date} <font color="red">${listy?values[key_index].priority}</font>) </br>
+                    <td id="item_column">${listy?values[key_index].description}</td> <td id="date_column">${date}</td> <td id="priority_column"><img src="images/reddot.png" alt="red dot"></td>
                 <#elseif listy?values[key_index].priority == "MEDIUM">
-                    ${listy?values[key_index].description} (${date} <font color="orange">${listy?values[key_index].priority}</font>) </br>
+                    <td id="item_column">${listy?values[key_index].description}</td> <td id="date_column">${date}</td> <td id="priority_column"><img src="images/yellowdot.png" alt="yellow dot"></td>
                 <#elseif listy?values[key_index].priority == "LOW">
-                    ${listy?values[key_index].description} (${date} <font color="blue">${listy?values[key_index].priority}</font>) </br>
+                    <td id="item_column">${listy?values[key_index].description}</td> <td id="date_column">${date}</td> <td id="priority_column"><img src="images/bluedot.png" alt="blue dot"></td>
                 </#if>
+                </tr>
+                </table>
             </#if> 
         </#list>
     </ul>
