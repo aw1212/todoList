@@ -1,8 +1,8 @@
-WebAppy/ToDoItem.class
-WebAppy/Priority.class
-WebAppy/ErrorMessage.class
-WebAppy/HelloController.class
-WebAppy/ToDoMap.class
-WebAppy/Application.class
-WebAppy/Action.class
-WebAppy/Application$1.class
+WebAppy\Application.class
+WebAppy\ErrorMessage.class
+WebAppy\ToDoItem.class
+WebAppy\Action.class
+WebAppy\ToDoMap.class
+WebAppy\Application$1.class
+WebAppy\Priority.class
+WebAppy\HelloController.class

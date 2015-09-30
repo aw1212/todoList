@@ -11,7 +11,7 @@
     <body bgcolor="#E6E6FA">
         <div class="container">
             <div class="row">
-                <h1>TO DO LIST <span class="glyphicon glyphicon-piggy-bank" style="font-size:1.5em;color:pink"></span></h1>
+                <h1 align="center"><span class="glyphicon glyphicon-piggy-bank reverse" style="font-size:1.5em;color:pink"></span> TO DO LIST <span class="glyphicon glyphicon-piggy-bank" style="font-size:1.5em;color:pink"></span></h1>
             </div>
             <form action="/addItem" method="POST">
                 <div class="form-group">
@@ -49,20 +49,30 @@
                         <ul>
                             <#list listy?keys as key>
                                 <#if !listy?values[key_index].done>
-                                    <table>
-                                        <tr>
-                                            <td id="checkbox_column">
-                                                <input type="checkbox" name="listItem" value="${key}">
-                                            </td>
-                                            <#assign date = listy?values[key_index].dueDate?date>
-                                            <#if listy?values[key_index].priority == "HIGH">
-                                                <td id="item_column">${listy?values[key_index].description}</td> <td id="date_column">${date}</td> <td id="priority_column"><span class="glyphicon glyphicon-asterisk" style="color:red"></span></td>
-                                            <#elseif listy?values[key_index].priority == "MEDIUM">
-                                                <td id="item_column">${listy?values[key_index].description}</td> <td id="date_column">${date}</td> <td id="priority_column"><span class="glyphicon glyphicon-asterisk" style="color:orange"></span></td>
-                                            <#elseif listy?values[key_index].priority == "LOW">
-                                                <td id="item_column">${listy?values[key_index].description}</td> <td id="date_column">${date}</td> <td id="priority_column"><span class="glyphicon glyphicon-asterisk" style="color:blue"></span></td>
-                                            </#if>
-                                        </tr>
+                                     <table class="table table-bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Item</th>
+                                                <th>Due date</th>
+                                                <th>Priority</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="checkbox_column" width="40">
+                                                    <input type="checkbox" name="listItem" value="${key}">
+                                                </td>
+                                                <#assign date = listy?values[key_index].dueDate?date>
+                                                <#if listy?values[key_index].priority == "HIGH">
+                                                    <td id="item_column" width="150">${listy?values[key_index].description}</td> <td id="date_column" width="80">${date}</td> <td id="priority_column" width="50"><span class="glyphicon glyphicon-asterisk" style="color:red"></span></td>
+                                                <#elseif listy?values[key_index].priority == "MEDIUM">
+                                                    <td id="item_column" width="150">${listy?values[key_index].description}</td> <td id="date_column" width="80">${date}</td> <td id="priority_column" width="50"><span class="glyphicon glyphicon-asterisk" style="color:orange"></span></td>
+                                                <#elseif listy?values[key_index].priority == "LOW">
+                                                    <td id="item_column" width="150">${listy?values[key_index].description}</td> <td id="date_column" width="80">${date}</td> <td id="priority_column" width="50"><span class="glyphicon glyphicon-asterisk" style="color:blue"></span></td>
+                                                </#if>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </#if> 
                             </#list>
