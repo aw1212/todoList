@@ -49,7 +49,7 @@
                         <ul>
                             <#list listy?keys as key>
                                 <#if !listy?values[key_index].done>
-                                     <table class="table table-bordered" width="100%">
+                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -65,11 +65,11 @@
                                                 </td>
                                                 <#assign date = listy?values[key_index].dueDate?date>
                                                 <#if listy?values[key_index].priority == "HIGH">
-                                                    <td id="item_column" width="150">${listy?values[key_index].description}</td> <td id="date_column" width="80">${date}</td> <td id="priority_column" width="50"><span class="glyphicon glyphicon-asterisk" style="color:red"></span></td>
+                                                    <td width="150">${listy?values[key_index].description}</td> <td width="80">${date}</td> <td width="50"><span class="glyphicon glyphicon-asterisk" style="color:red"></span></td>
                                                 <#elseif listy?values[key_index].priority == "MEDIUM">
-                                                    <td id="item_column" width="150">${listy?values[key_index].description}</td> <td id="date_column" width="80">${date}</td> <td id="priority_column" width="50"><span class="glyphicon glyphicon-asterisk" style="color:orange"></span></td>
+                                                    <td width="150">${listy?values[key_index].description}</td> <td width="80">${date}</td> <td width="50"><span class="glyphicon glyphicon-asterisk" style="color:orange"></span></td>
                                                 <#elseif listy?values[key_index].priority == "LOW">
-                                                    <td id="item_column" width="150">${listy?values[key_index].description}</td> <td id="date_column" width="80">${date}</td> <td id="priority_column" width="50"><span class="glyphicon glyphicon-asterisk" style="color:blue"></span></td>
+                                                    <td width="150">${listy?values[key_index].description}</td> <td width="80">${date}</td> <td width="50"><span class="glyphicon glyphicon-asterisk" style="color:blue"></span></td>
                                                 </#if>
                                             </tr>
                                         </tbody>
