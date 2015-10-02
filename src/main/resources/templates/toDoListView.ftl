@@ -8,7 +8,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/main.css"></link>
     </head>
-    <body bgcolor="#E6E6FA">
+    <body>
         <div class="container">
             <div class="row">
                 <h1 align="center"><span class="glyphicon glyphicon-piggy-bank reverse" style="font-size:1.5em;color:pink"></span> TO DO LIST <span class="glyphicon glyphicon-piggy-bank" style="font-size:1.5em;color:pink"></span></h1>
