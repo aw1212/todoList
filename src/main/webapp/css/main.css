@@ -1,8 +1,42 @@
+h1{
+    text-align: center
+}
+
 .reverse{
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     filter: FlipH;
-    -ms-filter: "FlipH";
+    -ms-filter: "FlipH"
+}
+
+.glyphicon-piggy-bank{
+    color: pink;
+    font-size: 1.5em
+}
+
+.error{
+    color: red;
+    font-style: italic
+}
+
+.glyphicon-asterisk.red{
+    color: red
+}
+
+.glyphicon-asterisk.orange{
+    color: orange
+}
+
+.glyphicon-asterisk.blue{
+    color: blue
+}
+
+.glyphicon-ok{
+    color: green
+}
+
+del{
+    font-style: italic
 }
