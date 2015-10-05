@@ -1,11 +1,21 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
 h1{
-    text-align: center
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.name{
+    vertical-align: 11px;
 }
 
 .reverse{
-    -moz-transform: scaleX(-1);
+    /*-moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);*/
     transform: scaleX(-1);
     filter: FlipH;
     -ms-filter: "FlipH"
@@ -13,12 +23,24 @@ h1{
 
 .glyphicon-piggy-bank{
     color: pink;
-    font-size: 1.5em
+    font-size: 1.5em;
 }
 
 .error{
     color: red;
     font-style: italic
+}
+
+.add-item font,.add-date font,.add-priority font,.list font:not(#no-tasks),.done font{
+    font-weight: bold;
+}
+
+.table.table-bordered{
+    width: 95%
+}
+
+th{
+    text-align: center
 }
 
 .glyphicon-asterisk.red{
@@ -39,4 +61,32 @@ h1{
 
 del{
     font-style: italic
+}
+
+td:not(.desc){
+    text-align: center
+}
+
+.desc{
+    width: 600px
+}
+
+.date{
+    width: 190px
+}
+
+.prio{
+    width: 140px
+}
+
+.btn{
+    font-weight: bold
+}
+
+.btn:hover:not(.btn-primary):not(.clear){
+    background-color: grey
+}
+
+.clear:hover{
+    background-color: orangered
 }

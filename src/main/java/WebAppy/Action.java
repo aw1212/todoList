@@ -56,7 +56,7 @@ public class Action {
         return "forward:/TextBox";
     }
     
-    @RequestMapping(value = "/refresh", method = RequestMethod.POST)
+    @RequestMapping(value = "/clear", method = RequestMethod.POST)
     public String wipeListAndMap() {
         toDoMap.clearMap();
         return "forward:/TextBox";
